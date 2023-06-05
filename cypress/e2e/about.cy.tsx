@@ -4,7 +4,7 @@
 // https://github.com/cypress-io/eslint-plugin-cypress
 
 import React from 'react';
-import About from './about'
+import About from '../../pages/about'
 
 // Cypress Component Test
 describe('<AboutPage />', () => {
