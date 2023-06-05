@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '16'
 
-      # Ajoutez vos étapes supplémentaires ici, si nécessaire
       - run: npm install
+      - run: cypress run
       - run: npm run build
       - run: ls -la
