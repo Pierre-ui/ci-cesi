@@ -1,12 +1,14 @@
 module.exports = {
-    apps: [{
-        name: "app",
-        script: "./app.js",
-        env: {
-            NODE_ENV: "development",
+    apps: [
+        {
+            name: 'Next App',
+            script: 'npm',
+            args: 'run start',
+            cwd: '/projects/ci-cesi',
+            interpreter: 'none',
+            env: {
+                NODE_ENV: 'production',
+            },
         },
-        env_production: {
-            NODE_ENV: "production",
-        }
-    }]
-}
+    ],
+};
