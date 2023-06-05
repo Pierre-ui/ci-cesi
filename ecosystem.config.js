@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
         name: "app",
-        script: "./_app.tsx",
+        script: "./app.js",
         env: {
             NODE_ENV: "development",
         },
