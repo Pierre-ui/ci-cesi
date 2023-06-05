@@ -15,5 +15,6 @@ jobs:
 #          node-version: '16'
 
       - run: npm install
+      - run: npm run e2e
       - run: npm run build
       - run: ls -la
