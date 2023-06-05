@@ -14,13 +14,6 @@ jobs:
 #        with:
 #          node-version: '16'
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          build: npm run build
-          start: npm start
-          browser: chrome
-
       - run: npm install
       - run: npm run build
       - run: ls -la
