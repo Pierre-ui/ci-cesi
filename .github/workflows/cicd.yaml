@@ -28,6 +28,8 @@ jobs:
           password: hackerman
           script: |
             git pull git@github.com:Pierre-ui/ci-cesi.git
+            npm install
+            npm run build
             pm2 start npm -- run start
     
 
