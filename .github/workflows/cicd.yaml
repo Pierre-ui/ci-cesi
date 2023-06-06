@@ -20,7 +20,7 @@ jobs:
       - run: |
           mkdir -p ~/.ssh
           ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
 
       - uses: webfactory/ssh-agent@v0.7.0
         with:
