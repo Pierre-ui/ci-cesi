@@ -1,9 +1,8 @@
-name: CI/CD
-
+name: compile-app-and-list-files
+run-name: ${{ github.actor }} est en train de compiler l'application et d'afficher la liste des fichiers
 on: [push]
-
 jobs:
-  launching-server:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -15,6 +14,4 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - run: ssh ${{secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "ls"
-
-
+      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd test-ci/ && git pull && npm install && npm run build && pm2 stop npm && pm2 start npm"
