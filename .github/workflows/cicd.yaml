@@ -24,7 +24,7 @@ jobs:
         with:
           host: 13.37.252.210
           username: Pierre Scheldewaert
-          key: hackerman
+          key: ${{ secrets.aws server key }}
           script: |
             git pull git@github.com:Pierre-ui/ci-cesi.git
             pm2 start npm -- run start
