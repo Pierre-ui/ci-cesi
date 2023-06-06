@@ -8,13 +8,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path:
-            - node_modules
-            - /home/runner/.cache/cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm install
       - name: Build project
@@ -26,13 +19,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path:
-            - node_modules
-            - /home/runner/.cache/cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Connect to AWS instance
         uses: appleboy/ssh-action@master
         with:
