@@ -20,9 +20,9 @@ jobs:
       - name: Build project
         run: npm run build
 
-  test:
-    runs-on: ubuntu-latest
+  launching-server:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -33,10 +33,14 @@ jobs:
             - node_modules
             - /home/runner/.cache/cypress
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - name: Run E2E tests
-        run: npm run e2e:headless
-      - name: Upload test artifacts
-        uses: actions/upload-artifact@v2
+      - name: Connect to AWS instance
+        uses: appleboy/ssh-action@master
         with:
-          name: e2e-video
-          path: cypress/videos/
+          host: 13.37.252.210
+          username: Pierre Scheldewaert
+          key: hackerman
+          script: |
+            git pull git@github.com:Pierre-ui/ci-cesi.git
+            pm2 start npm -- run start
+    
+
