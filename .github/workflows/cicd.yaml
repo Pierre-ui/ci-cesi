@@ -17,19 +17,15 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Connect to AWS instance
-        uses: appleboy/ssh-action@master
+      - run: |
+          mkdir -p ~/.ssh
+          ssh keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - uses: webfactory/ssh-agent@v.0.5.4
         with:
-          host: 13.37.252.210
-          username: Pierre Scheldewaert
-          key: ${{ secrets.AWS_SERVER_KEY }}
-          password: hackerman
-          script: |
-            git pull git@github.com:Pierre-ui/ci-cesi.git
-            npm install
-            npm run build
-            pm2 start npm -- run start
-    
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - run: ssh ${{secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "ls"
+
 
