@@ -14,4 +14,4 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ci-cesi/ && git pull && npm install && npm run build && pm2 stop npm && pm2 start npm"
+      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd projects/ci-cesi/ && git pull && npm install && npm run build && pm2 stop npm && pm2 start npm"
